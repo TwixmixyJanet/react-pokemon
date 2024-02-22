@@ -61,20 +61,14 @@ function App() {
   return (
     <Router>
       <Header />
+      <Home
+        pokemon={pokemon}
+        nextPageUrl={nextPageUrl}
+        prevPageUrl={prevPageUrl}
+        gotoNextPage={gotoNextPage}
+        gotoPrevPage={gotoPrevPage}
+      />
       <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <Home
-              pokemon={pokemon}
-              nextPageUrl={nextPageUrl}
-              prevPageUrl={prevPageUrl}
-              gotoNextPage={gotoNextPage}
-              gotoPrevPage={gotoPrevPage}
-            />
-          }
-        />
         <Route
           path="/pokemon/:name"
           element={
