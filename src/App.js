@@ -23,7 +23,18 @@ function App() {
         setLoading(false); // once the data is fetched, we set loading to false.
         setNextPageUrl(res.data.next); // next is a property of the response object from the API. It's a URL to the next page of results.
         setPrevPageUrl(res.data.previous); // previous is a property of the response object from the API. It's a URL to the previous page of results.
-        setPokemon(res.data.results.map((p) => p.name));
+        Promise.all(
+          res.data.results.map(async (p) => {
+            const pokemonResponse = await axios.get(p.url);
+            return {
+              name: p.name,
+              url: p.url,
+              image: pokemonResponse.data.sprites.front_default,
+            };
+          })
+        ).then((pokemonData) => {
+          setPokemon(pokemonData);
+        }); // results is a property of the response object from the API. It's an array of pokemons. We use the map method to loop through the array and return an object with the name and url of each pokemon.
 
         return () => {
           cancel();
