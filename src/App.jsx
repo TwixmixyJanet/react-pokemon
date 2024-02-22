@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link,
-  useNavigate,
-} from "react-router-dom";
-import PokemonList from "./PokemonList";
-import Pagination from "./Pagination";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PokemonDetails from "./PokemonDetails";
 import axios from "axios";
 import Header from "./Header";
-// import About from "./About";
+import Home from "./Home";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -47,15 +39,15 @@ function App() {
         ).then((pokemonData) => {
           setPokemon(pokemonData);
         });
-
-        return () => {
-          cancel();
-        };
       })
       .catch((error) => {
         console.error("Error fetching Pokemon:", error);
         setLoading(false);
       });
+
+    return () => {
+      cancel && cancel(); // Cancel request on component unmount
+    };
   }, [currentPageUrl]);
 
   function gotoNextPage() {
@@ -74,16 +66,15 @@ function App() {
           exact
           path="/"
           element={
-            <>
-              <PokemonList pokemon={pokemon} />
-              <Pagination
-                gotoNextPage={nextPageUrl ? gotoNextPage : null}
-                gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
-              />
-            </>
+            <Home
+              pokemon={pokemon}
+              nextPageUrl={nextPageUrl}
+              prevPageUrl={prevPageUrl}
+              gotoNextPage={gotoNextPage}
+              gotoPrevPage={gotoPrevPage}
+            />
           }
         />
-        {/* Route for individual Pokemon details */}
         <Route
           path="/pokemon/:name"
           element={
