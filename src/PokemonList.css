@@ -1,11 +1,11 @@
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between; /* Adjust spacing between items */
   }
   
   .pokemon-item {
-    margin: 10px;
+    width: 18%; /* Set width to approximately 1/5 of the container */
+    margin-bottom: 20px; /* Add bottom margin for spacing */
     text-align: center;
   }
-  

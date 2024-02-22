@@ -24,16 +24,19 @@ function App() {
         setNextPageUrl(res.data.next); // next is a property of the response object from the API. It's a URL to the next page of results.
         setPrevPageUrl(res.data.previous); // previous is a property of the response object from the API. It's a URL to the previous page of results.
         Promise.all(
+          // we use Promise.all to wait for all the promises to resolve before setting the pokemon state.
           res.data.results.map(async (p) => {
-            const pokemonResponse = await axios.get(p.url);
+            // results is a property of the response object from the API. It's an array of pokemons. We use the map method to loop through the array and return an object with the name and url of each pokemon.
+            const pokemonResponse = await axios.get(p.url); // we use the url property of the pokemon to fetch the data for each pokemon.
             return {
-              name: p.name,
-              url: p.url,
-              image: pokemonResponse.data.sprites.front_default,
+              name: p.name, // we return an object with the name of each pokemon.
+              url: p.url, // we return an object with the url of each pokemon.
+              image: pokemonResponse.data.sprites.front_default, // we return an object with the image of each pokemon.
             };
           })
         ).then((pokemonData) => {
-          setPokemon(pokemonData);
+          // we use then to wait for the promises to resolve before setting the pokemon state.
+          setPokemon(pokemonData); // we set the pokemon state to the pokemonData array.
         }); // results is a property of the response object from the API. It's an array of pokemons. We use the map method to loop through the array and return an object with the name and url of each pokemon.
 
         return () => {
