@@ -33,11 +33,11 @@ function App() {
   }, [currentPageUrl]); // every time currentPageUrl changes, useEffect will run. This is used because we want to fetch the data from the API every time the currentPageUrl changes. For the pagination! If this array is left blank, then it's because we don't want the useEffect to run every time the component re-renders.
 
   function gotoNextPage() {
-    setCurrentPageUrl(nextPageUrl);
+    setCurrentPageUrl(nextPageUrl); // we set the currentPageUrl to the nextPageUrl when the user clicks the "Next" button.
   }
 
   function gotoPrevPage() {
-    setCurrentPageUrl(prevPageUrl);
+    setCurrentPageUrl(prevPageUrl); // we set the currentPageUrl to the prevPageUrl when the user clicks the "Previous" button.
   }
 
   if (loading) return "Loading..."; // if loading is true, we return "Loading...". This is because we want to show a loading spinner when the data is being fetched from the API.
