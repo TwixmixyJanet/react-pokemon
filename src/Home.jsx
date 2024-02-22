@@ -2,7 +2,7 @@ import React from "react";
 import PokemonList from "./PokemonList";
 import Pagination from "./Pagination";
 
-const MainPage = ({
+const Home = ({
   pokemon,
   nextPageUrl,
   prevPageUrl,
@@ -20,4 +20,4 @@ const MainPage = ({
   );
 };
 
-export default MainPage;
+export default Home;
