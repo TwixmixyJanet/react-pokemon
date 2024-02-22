@@ -10,6 +10,8 @@ import PokemonList from "./PokemonList";
 import Pagination from "./Pagination";
 import PokemonDetails from "./PokemonDetails";
 import axios from "axios";
+import Header from "./Header";
+// import About from "./About";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -66,6 +68,7 @@ function App() {
 
   return (
     <Router>
+      <Header />
       <Routes>
         <Route
           exact

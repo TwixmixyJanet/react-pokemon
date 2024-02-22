@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import "./styles.css";
 
 function PokemonDetails({
   pokemon,
@@ -54,7 +55,7 @@ function PokemonDetails({
     <div>
       {pokemonDetails ? (
         <div>
-          <h2>{pokemonDetails.name}</h2>
+          <h2 className="pokename">{pokemonDetails.name}</h2>
           <img
             src={pokemonDetails.sprites.other["official-artwork"].front_default}
             alt={pokemonDetails.name}

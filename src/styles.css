@@ -8,4 +8,76 @@
     width: 18%; /* Set width to approximately 1/5 of the container */
     margin-bottom: 20px; /* Add bottom margin for spacing */
     text-align: center;
+    position: relative;
   }
+
+  .pokemon-item img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pokemon-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("https://pixelartmaker.com/art/85f423a73cecafe.png"); /* Replace with your bush image URL */
+    background-size: cover;
+    z-index: -1;
+  }
+
+  .pokename {
+    text-transform: uppercase;
+  }
+
+/* pokedex header */
+.pokemon-header {
+  background-color: #f44336; /* Red color for Pokémon theme */
+  color: #fff; /* White color for text */
+  padding: 20px;
+}
+
+.pokemon-title {
+  font-family: 'Pokemon Solid', sans-serif; /* Use Pokémon font for title */
+  font-size: 2rem;
+  margin: 0;
+}
+
+.pokemon-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pokemon-nav li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.pokemon-link {
+  color: #fff; /* White color for links */
+  text-decoration: none;
+}
+
+.pokemon-link:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+/* pokemon list name */
+.pokemon-name {
+  font-family: 'Pokemon Solid', sans-serif; /* Use Pokemon font for names */
+  font-size: 1.2rem; /* Adjust font size as needed */
+  text-transform: capitalize; /* Capitalize the first letter of each word */
+  margin-top: 5px; /* Add margin to separate name from image */
+}
+
+.pokemon-name a {
+  color: #000; /* Black color for names */
+  text-decoration: none; /* Remove underline from names */
+}
+
+.pokemon-name a:hover {
+  text-decoration: underline; /* Underline names on hover */
+}

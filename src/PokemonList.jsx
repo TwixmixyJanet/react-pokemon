@@ -1,3 +1,4 @@
+// PokemonList.jsx
 import React from "react";
 import "./styles.css";
 
@@ -9,20 +10,24 @@ export default function PokemonList({ pokemon }) {
 
   return (
     <div className="pokemon-container">
-      {" "}
-      {/* Apply the container class */}
       {pokemon.map((poke, index) => (
         <div className="pokemon-item" key={index}>
-          {" "}
-          {/* Apply the item class */}
           <div>
-            <img src={poke.image} alt={poke.name} />
+            <a href={`/pokemon/${poke.name}`}>
+              <img src={poke.image} alt={poke.name} />
+            </a>
           </div>
-          <div>
-            <a href={`/pokemon/${poke.name}`}>{poke.name}</a>
+          <div className="pokemon-name">
+            <a href={`/pokemon/${poke.name}`}>{formatPokemonName(poke.name)}</a>
           </div>
         </div>
       ))}
     </div>
   );
+}
+
+// Helper function to format Pokemon names
+function formatPokemonName(name) {
+  // Capitalize the first letter of each word
+  return name.charAt(0).toUpperCase() + name.slice(1);
 }
