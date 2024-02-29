@@ -70,7 +70,7 @@ function App() {
       />
       <Routes>
         <Route
-          path="/pokemon/:name"
+          path="/react-pokemon/pokemon/:name"
           element={
             <PokemonDetails
               pokemon={pokemon}
