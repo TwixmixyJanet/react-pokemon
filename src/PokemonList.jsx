@@ -1,5 +1,6 @@
 // PokemonList.jsx
 import React from "react";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default function PokemonList({ pokemon }) {
@@ -13,12 +14,14 @@ export default function PokemonList({ pokemon }) {
       {pokemon.map((poke, index) => (
         <div className="pokemon-item" key={index}>
           <div>
-            <a href={`/pokemon/${poke.name}`}>
+            <Link to={`/pokemon/${poke.name}`}>
               <img src={poke.image} alt={poke.name} />
-            </a>
+            </Link>
           </div>
           <div className="pokemon-name">
-            <a href={`/pokemon/${poke.name}`}>{formatPokemonName(poke.name)}</a>
+            <Link to={`/pokemon/${poke.name}`}>
+              {formatPokemonName(poke.name)}
+            </Link>
           </div>
         </div>
       ))}
