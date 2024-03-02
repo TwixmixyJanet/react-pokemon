@@ -59,7 +59,7 @@ function App() {
   }
 
   return (
-    <Router>
+    <Router basename="/react-pokemon">
       <Header />
       <Routes>
         <Route
