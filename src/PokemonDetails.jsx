@@ -81,18 +81,30 @@ function PokemonDetails({
           <div>
             {prevPokemon && (
               <Link to={`/pokemon/${prevPokemon.name}`}>
-                <button onClick={handleClickPrev}>Previous</button>
+                <button
+                  className="pokemon-font-button"
+                  onClick={handleClickPrev}
+                >
+                  Previous
+                </button>
               </Link>
             )}
             {nextPokemon && (
               <Link to={`/pokemon/${nextPokemon.name}`}>
-                <button onClick={handleClickNext}>Next</button>
+                <button
+                  className="pokemon-font-button"
+                  onClick={handleClickNext}
+                >
+                  Next
+                </button>
               </Link>
             )}
           </div>
           <div>
             <Link to="/">
-              <button>Return to All Pokemon</button>
+              <button className="pokemon-font-button">
+                Return to All Pokemon
+              </button>
             </Link>
           </div>
         </div>

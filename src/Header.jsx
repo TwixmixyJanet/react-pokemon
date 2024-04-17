@@ -1,9 +1,16 @@
 // Header.jsx
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-function Header() {
+function Header({ onSearch }) {
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    onSearch(e.target.value);
+  };
+
   return (
     <header className="pokemon-header">
       <img
@@ -21,6 +28,14 @@ function Header() {
           {/* Add more navigation links as needed */}
         </ul>
       </nav>
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search Pokemon..."
+          value={searchQuery}
+          onChange={handleSearch}
+        />
+      </div>
     </header>
   );
 }

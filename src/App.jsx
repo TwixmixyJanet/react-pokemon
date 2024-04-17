@@ -14,6 +14,7 @@ function App() {
   const [prevPageUrl, setPrevPageUrl] = useState();
   const [loading, setLoading] = useState(true);
   const [currentPokemonIndex, setCurrentPokemonIndex] = useState(0); // Track the index of the current Pokemon
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     setLoading(true);
@@ -50,6 +51,16 @@ function App() {
     };
   }, [currentPageUrl]);
 
+  useEffect(() => {
+    if (searchQuery) {
+      setCurrentPageUrl(
+        `https://pokeapi.co/api/v2/pokemon?limit=20&offset=0&${searchQuery}`
+      );
+    } else {
+      setCurrentPageUrl("https://pokeapi.co/api/v2/pokemon");
+    }
+  }, [searchQuery]);
+
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl);
   }
@@ -58,16 +69,24 @@ function App() {
     setCurrentPageUrl(prevPageUrl);
   }
 
+  function handleSearch(query) {
+    setSearchQuery(query.toLowerCase());
+  }
+
+  const filteredPokemon = pokemon.filter((poke) =>
+    poke.name.toLowerCase().includes(searchQuery)
+  );
+
   return (
     <Router basename="/react-pokemon">
-      <Header />
+      <Header onSearch={handleSearch} />
       <Routes>
         <Route
           exact
           path="/"
           element={
             <Home
-              pokemon={pokemon}
+              pokemon={filteredPokemon}
               nextPageUrl={nextPageUrl}
               prevPageUrl={prevPageUrl}
               gotoNextPage={gotoNextPage}
@@ -79,7 +98,7 @@ function App() {
           path="/pokemon/:name"
           element={
             <PokemonDetails
-              pokemon={pokemon}
+              pokemon={filteredPokemon}
               currentPokemonIndex={currentPokemonIndex}
               setCurrentPokemonIndex={setCurrentPokemonIndex}
             />
