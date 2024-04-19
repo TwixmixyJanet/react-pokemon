@@ -79,7 +79,13 @@ function App() {
 
   return (
     <Router basename="/react-pokemon">
-      <Header onSearch={handleSearch} />
+      <Header
+        onSearch={handleSearch}
+        nextPageUrl={nextPageUrl}
+        prevPageUrl={prevPageUrl}
+        gotoNextPage={gotoNextPage}
+        gotoPrevPage={gotoPrevPage}
+      />
       <Routes>
         <Route
           exact

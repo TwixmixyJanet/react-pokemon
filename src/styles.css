@@ -50,10 +50,17 @@
 .pokemon-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #f44336; /* Red color for Pokémon theme */
   color: #fff; /* White color for text */
   padding: 20px;
+}
+
+.header-container {
+  display: flex; /* Enable flexbox for the container */
+  justify-content: space-between; /* Distribute space between items */
+  width: 100%; /* Full width of the header */
+  align-items: center; /* Center items vertically */
 }
 
 .pokemon-title {
@@ -178,4 +185,10 @@ button {
   padding: 5px;
   width: 200px; /* Adjust the width as needed */
   /* Add any other styling here */
+}
+
+.menu-pagination {
+  display: flex;
+  justify-content: center; /* Center the pagination controls */
+  flex-grow: 1; /* Allow it to take up remaining space */
 }
