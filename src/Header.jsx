@@ -22,18 +22,19 @@ function Header({ onSearch }) {
         <ul className="pokemon-nav">
           <li>
             <Link to="/" className="pokemon-link">
-              Home
+              <button className="pokemon-font-button">Home</button>
             </Link>
           </li>
           {/* Add more navigation links as needed */}
         </ul>
       </nav>
-      <div className="search-container">
+      <div className="search-container pokedex-style">
         <input
           type="text"
           placeholder="Search Pokemon..."
           value={searchQuery}
           onChange={handleSearch}
+          className="pokedex-search-input"
         />
       </div>
     </header>

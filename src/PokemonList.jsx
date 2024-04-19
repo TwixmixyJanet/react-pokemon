@@ -20,7 +20,9 @@ export default function PokemonList({ pokemon }) {
           </div>
           <div className="pokemon-name">
             <Link to={`/pokemon/${poke.name}`}>
-              {formatPokemonName(poke.name)}
+              <button className="pokemon-font-button">
+                {formatPokemonName(poke.name)}
+              </button>
             </Link>
           </div>
         </div>

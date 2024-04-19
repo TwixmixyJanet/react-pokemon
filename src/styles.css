@@ -48,6 +48,9 @@
 
 /* pokedex header */
 .pokemon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #f44336; /* Red color for Pokémon theme */
   color: #fff; /* White color for text */
   padding: 20px;
@@ -153,4 +156,26 @@
 
 button {
   margin: 10px;
+}
+
+.pokedex-style {
+  /* Add a background color, border styles, padding, etc. */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Update the search-container class */
+.search-container {
+  margin-left: auto; /* Pushes search container to the right */
+}
+
+/* Update search input styling as desired */
+.pokedex-search-input {
+  /* Style the input field */
+  background-color: #ffffff;
+  border: 2px solid #ff0000;
+  border-radius: 5px;
+  padding: 5px;
+  width: 200px; /* Adjust the width as needed */
+  /* Add any other styling here */
 }
