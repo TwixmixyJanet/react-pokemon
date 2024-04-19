@@ -1,3 +1,8 @@
+:root {
+  --pokemon-digital: 'Pokemon Solid', sans-serif;
+  --pokemon-font: 'Press Start 2P', cursive;
+}
+
 .pokemon-container {
     display: flex;
     flex-wrap: wrap;
@@ -44,6 +49,7 @@
 
   .pokename {
     text-transform: uppercase;
+    font-family: var(--pokemon-digital);
   }
 
 /* pokedex header */
@@ -61,12 +67,6 @@
   justify-content: space-between; /* Distribute space between items */
   width: 100%; /* Full width of the header */
   align-items: center; /* Center items vertically */
-}
-
-.pokemon-title {
-  font-family: 'Pokemon Solid', sans-serif; /* Use Pokémon font for title */
-  font-size: 2rem;
-  margin: 0;
 }
 
 .pokemon-nav {
@@ -192,3 +192,103 @@ button {
   justify-content: center; /* Center the pagination controls */
   flex-grow: 1; /* Allow it to take up remaining space */
 }
+
+.pokedex-details {
+  background-color: #f7f7f7; /* Light gray background for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.pokemon-card {
+  background-color: #fff; /* White background */
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid #ff0000; /* Red border for a Pokédex look */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-image {
+  /* width: 200px;
+  height: 200px; */
+  border: 2px solid #ffcb05; /* Yellow border to match Pokémon theme */
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffcb05;
+}
+
+.stats-title {
+  font-family: var(--pokemon-digital); /* Use Pokémon font for title */
+  font-size: 1.2rem;
+  text-transform: uppercase;;
+  margin: 0;
+  background-color: #E3350D;
+  color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.progress-bar {
+  width: 200px; /* Adjust width as needed */
+  /* height: 30px; */
+  background-color: #ccc; /* Light gray background for the bar */
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  color: #fff;
+  font-weight: bold;
+  font-family: var(--pokemon-digital);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #00aaff; /* Blue for the fill */
+  padding: 5px;
+}
+
+.base-stats-bullet {
+  list-style-type: none;
+  text-transform: uppercase;
+  margin-left: -40px;
+  font-family: var(--pokemon-digital);
+}
+
+.abilities-stats-bullet {
+  list-style-type: none;
+  margin-left: -40px;
+}
+
+.pokemon-info {
+  display: flex; /* Use flexbox to align left and right sections */
+  justify-content: flex-start; /* Align children to the left */
+  align-items: flex-start; /* Align children to the top */
+  gap: 20%;  /*Adjust spacing between the left and right sections */
+  padding: 20px;
+}
+
+.pokemon-info-left,
+.pokemon-info-right {
+  width: 200px;
+  padding: 20px; /* Add padding to both left and right sections */
+}
+
+.pokemon-info p,
+.pokemon-info ul,
+.pokemon-info li {
+    margin-bottom: 10px; /* Add margin at the bottom of elements to create spacing */
+}
+
+/* .pokemon-info-left {
+  width: 50%;
+}
+
+.pokemon-info-right {
+  width: 50%;
+} */

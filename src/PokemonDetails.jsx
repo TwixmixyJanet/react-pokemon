@@ -25,20 +25,15 @@ function PokemonDetails({
 
     fetchPokemonDetails();
 
-    // Cleanup function
     return () => {
-      setPokemonDetails(null); // Clear state on unmount
+      setPokemonDetails(null);
     };
   }, [name]);
 
-  // Find index of current pokemon in the pokemon array
   const currentIndex = pokemon.findIndex((p) => p.name === name);
-
-  // Get the next and previous pokemon names
   const nextPokemon = pokemon[currentIndex + 1];
   const prevPokemon = pokemon[currentIndex - 1];
 
-  // Handle clicking next/previous buttons
   const handleClickNext = () => {
     if (nextPokemon) {
       setCurrentPokemonIndex(currentIndex + 1);
@@ -52,33 +47,58 @@ function PokemonDetails({
   };
 
   return (
-    <div>
+    <div className="pokedex-details">
       {pokemonDetails ? (
-        <div>
+        <div className="pokemon-card">
           <h2 className="pokename">{pokemonDetails.name}</h2>
           <img
             src={pokemonDetails.sprites.other["official-artwork"].front_default}
             alt={pokemonDetails.name}
+            className="pokemon-image"
           />
-          <p>Type: {pokemonDetails.types[0].type.name}</p>
-          <p>Height: {pokemonDetails.height}</p>
-          <p>Weight: {pokemonDetails.weight}</p>
-          <h3>Abilities</h3>
-          <ul>
-            {pokemonDetails.abilities.map((ability, index) => (
-              <li key={index}>{ability.ability.name}</li>
-            ))}
-          </ul>
+          <div className="pokemon-info">
+            {/* Left side for Type, Height, Weight, and Abilities */}
+            <div className="pokemon-info-left">
+              <h3 className="stats-title">Type:</h3>
+              <p>
+                {pokemonDetails.types.map((type) => type.type.name).join(", ")}
+              </p>
+              <h3 className="stats-title">Height:</h3>
+              <p>{pokemonDetails.height}</p>
+              <h3 className="stats-title">Weight:</h3>
+              <p>{pokemonDetails.weight}</p>
+              <h3 className="stats-title">Abilities:</h3>
+              <ul>
+                {pokemonDetails.abilities.map((ability, index) => (
+                  <li key={index} className="abilities-stats-bullet">
+                    {ability.ability.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <h3>Base Stats</h3>
-          <ul>
-            {pokemonDetails.stats.map((stat, index) => (
-              <li key={index}>
-                {stat.stat.name}: {stat.base_stat}
-              </li>
-            ))}
-          </ul>
-          <div>
+            {/* Right side for Base Stats */}
+            <div className="pokemon-info-right">
+              <h3 className="stats-title">Base Stats:</h3>
+              <ul>
+                {pokemonDetails.stats.map((stat, index) => (
+                  <li key={index} className="base-stats-bullet">
+                    <strong>{stat.stat.name}:</strong>
+                    <div className="progress-bar">
+                      <div
+                        className="progress-bar-fill"
+                        style={{ width: `${stat.base_stat}%` }}
+                      >
+                        {stat.base_stat}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="pokemon-navigation">
             {prevPokemon && (
               <Link to={`/pokemon/${prevPokemon.name}`}>
                 <button
